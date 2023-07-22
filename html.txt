@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Student DATA Profile</title>
+  <style>
+    
+       body {
+      font-family: Arial, sans-serif;
+      margin: 90;
+      padding: 100;
+      background-image: url("https://lexica.art/prompt/bf88b320-1929-4c82-a51c-dbbe171da006");
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: rgba(245, 247, 235, 0.7);
+      border-radius: 60px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      margin-top: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 90%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .form-group .year-input {
+      width: calc(100% - 50px);
+      float: left;
+      margin-right: 10px;
+    }
+
+    .form-group .branch-input {
+      width: calc(100% - 50px);
+      float: left;
+      margin-right: 20px;
+    }
+
+    .form-group .phone-input {
+      width: calc(100% - 140px);
+      float: left;
+      margin-right: 10px;
+    }
+
+    .form-group .button {
+      clear: both;
+      text-align: center;
+    }
+
+    .form-group .button button {
+      padding: 8px 20px;
+      background-color: #4CAF50;
+      border: none;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .form-group .button button:hover {
+      background-color: #45a049;
+    }
+
+    .profile-photo {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .profile-photo img {
+      
+      height: 80px;
+      border-radius: S0%;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 90px;
+    }
+
+    .logo img {
+      width: 60px;
+      height: 90px;
+    }
+.hidden-section {
+  display: none;
+}
+
+/* Styling for the button */
+.education-button {
+  padding: 8px 20px;
+  background-color: #4CAF50;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Styling for the expanded section */
+#education-section {
+  background-color: rgba(245, 247, 235, 0.7);
+  padding: 20px;
+  margin-top: 10px;
+  border-radius: 6px;
+}
+
+  </style>
+  
+</head>
+<body>
+  <div class="container">
+    <h1> Student DATA Profile</h1>
+    <div class="profile-photo">
+      <img src="cropped-kiet-logo.png" alt="Profile Photo">
+    </div>
+    <form>
+      <!-- Existing form fields -->
+      <!-- ... -->
+     <form>
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+          <div class="form-group">
+            <label for="rollnumber">Roll Number:</label>
+            <input type="text" id="rollnumber" name="rollnumber" pattern="\d{10}" required
+            
+          </div>
+          <div class="form-group">
+            <label for="branch">Branch:</label>
+            <select id="branch" name="branch" class="branch-input" required>
+                 <option value="">Select Branch</option
+                <option value="AID">Artificial Intelligence and Data Science</option>
+                <option value="CSM">Artificial Intelligence and Machine Learning</option>
+                <option value="CSC">Cyber Security</option>
+                <option value="CSD">Data Science</option>
+                <option value="CAI">Artificial Intelligence</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="year">Year:</label>
+              <select id="year" name="year" class="year-input" required>
+                <option value="">Select Year</option>
+                <option value="1">First Year</option>
+                <option value="2">Second Year</option>
+                <option value="3">Third Year</option>
+                <option value="4">Final Year</option>
+              </select>
+          </div>
+      <div class="form-group">
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+      <div class="form-group">
+        <label for="adhar">Aadhaar Number:</label>
+        <input type="text" id="adhar" name="adhar" required oninput="validateAadhaar(this.value)">
+        <span id="adharCount">0/12</span>
+      </div><div class="form-group">
+        <label for="fatherName">Father's Name:</label>
+        <input type="text" id="fatherName" name="fatherName" required>
+      </div>
+      <div class="form-group">4
+        <label for="motherName">Mother's Name:</label>
+        <input type="text" id="motherName" name="motherName" required>
+      </div>
+      <div class="form-group">
+        <label for="education10th">10th Grade Education:</label>
+        <input type="number" id="education10th" name="education10th" required>
+        <label for="cgpa">CGPA:</label>
+        <input type="number" id="cgpaPoints" name="cgpaPoints" required>
+      </div>
+      <div class="form-group">
+        <label for="education12th">12th Grade Education:</label>
+        <input type="number" id="education12th" name="education12th" required>
+        <label for="cgpa">CGPA:</label>
+
+        <input type="number" id="cgpaPoints" name="cgpaPoints" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="lms">LMS (Learning Management System):</label>
+        <select id="lms" name="lms" required>
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="certificate">Certificates:</label>
+        <input type="file" id="certificate" name="certificate">
+      </div>
+      
+      <div class="form-group">
+        <div class="form-group">
+          <div class="form-group">
+            <label for="githubLink">GitHub Link:</label>
+            <input type="text" id="githubLink" name="githubLink" pattern="^(https?:\/\/)?(www\.)?github\.com\/[a-zA-Z0-9_-]+(\/[a-zA-Z0-9_-]+)*\/?$" required>
+            <small>Enter a valid GitHub link (e.g., https://github.com/username)</small>
+          </div>
+            
+      </div>
+      <div class="form-group">
+        <div class="form-group">
+          <label for="linkedinLink">LinkedIn Link:</label>
+          <input type="url" id="linkedinLink" name="linkedinLink" required pattern="https?://(?:www\.)?linkedin\.com/.*">
+          <small>Enter a valid LinkedIn profile URL starting with http:// or https://</small>
+        </div>
+        <div class="form-group">
+          <label for="excelFile">Excel File:</label>
+          <input type="file" id="excelFile" name="excelFile" accept=".xlsx, .xls">
+        </div>
+        
+      </div>
+      <div class="form-group button">
+        <button type="button" onclick="saveProfile()">Save</button>
+      </div>
+      <button class="education-button" onclick="toggleEducation()">Education</button>
+
+<div id="education-section" class="hidden-section">
+  <h2>Education</h2>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean fringilla ultrices neque vitae suscipit.</p>
+  <!-- Include your education details or content here -->
+</div>

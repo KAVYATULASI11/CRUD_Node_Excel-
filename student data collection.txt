@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>Form Data:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Age</th>
+                <th>Mobile</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in form_data %}
+                <tr>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.email }}</td>
+                    <td>{{ entry.Age }}</td>
+                    <td>{{ entry.Mobile }}</td>
+                    <td>{{ entry.message }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h1>Excel Data:</h1>
+    {% for entry in excel_data %}
+        <h2>Excel File:</h2>
+        <table>
+            <thead>
+                <tr>
+                    {% for key in entry %}
+                        {% if key != 'filename' %}
+                            <th>{{ key }}</th>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for key, value in entry.items() %}
+                        {% if key != 'filename' %}
+                            <td>
+                                {% if value is iterable and not value|string %}
+                                    {% for item in value %}
+                                        {{ item }},
+                                    {% endfor %}
+                                {% else %}
+                                    {{ value }}
+                                {% endif %}
+                            </td>
+                        {% endif %}
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    {% endfor %}
+</body>
+</html>
